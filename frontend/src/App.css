@@ -14,4 +14,16 @@
   color: rgb(20, 18, 18);
 }
 
+.App-form {
+  margin: 25px;
+  padding: 10px;
+}
+
+.App-form-button
+{
+  padding: 10px 25px;
+  background-color: green;
+  color: white;
+}
+
 
