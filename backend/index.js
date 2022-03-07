@@ -1,22 +1,22 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const fs = require('fs')
-const app = express()
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const app = express();
 
-app.use(cors())
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json())
-app.use(bodyParser.raw())
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 
 //initialise the backend port
-var PORT = 5005
+const PORT = 4000;
 
 var server = app.listen(PORT, () => {
     console.log(`Backend is listening on port ${PORT}\n`)
-})
-server.setTimeout(5 * 60 * 1000)
+});
+server.setTimeout(5 * 60 * 1000);
 
 //create the routes
 
@@ -24,7 +24,7 @@ server.setTimeout(5 * 60 * 1000)
 app.get('/', (req, res) => {
     console.log("Pinged")
     res.send(["Pinged"])
-})
+});
 
 
 // Register page route
@@ -36,18 +36,18 @@ app.post("/registerUser", (req, res) => {
      * body: req.body
      * })
      */
-})
+});
 // Login page route
     //functionality to verifiy credentials
 app.post("/loginUser", (req, res) => {
-    bayUser = req.body
+    bayUser = req.body;
     if (!bayUser.user || !bayUser.password){
-        res.send(["You need to enter all your credentials"])
-        return
+        res.send(["You need to enter all your credentials"]);
+        return;
     }
 
     //TODO: Add function that fetches data from an endpoint
-    //E.g: 
+    //E.g:
     /**
      * fetch(http://localhost:5005/storedLoginCreds/bayUser.user)
      * .then((fetchedCreds) => {
@@ -59,5 +59,5 @@ app.post("/loginUser", (req, res) => {
      *  res.status(403).send(["Login failed"])
      * }
      */
-})
+});
 
