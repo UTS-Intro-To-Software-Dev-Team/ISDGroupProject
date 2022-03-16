@@ -1,10 +1,10 @@
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
 
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
@@ -36,6 +36,7 @@ app.post("/registerUser", (req, res) => {
      * body: req.body
      * })
      */
+    console.log("Huh.");
 });
 // Login page route
     //functionality to verifiy credentials

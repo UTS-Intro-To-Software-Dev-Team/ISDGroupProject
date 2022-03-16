@@ -6,7 +6,30 @@ function Register (){
 
     const onSubmit = (data) => {
         console.log(data);
+
+        fetch('http://localhost:4000/registerUser', {
+            method:'POST',
+            body: JSON.stringify(data)
+        }).then(response => {
+            console.log(response);
+            if (response.status >= 200 && response.status < 300) {
+                return response;
+            } else {
+                console.log('Somthing happened wrong');
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     };
+
+    //??(onOnSubmit)
+    //fetch('/registerData', {
+    //     method:'POST',
+    //     body:JSON.stringify(data)
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    //}
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -17,13 +40,12 @@ function Register (){
             />
 
             <input type="password" placeholder="Password"
-                {...register("password", {required: true, minLength: 8})
-                }
+                {...register("password", {required: true, minLength: 8})}
             />
 
             <input type="submit"/>
             {errors.email && <p>Invalid Email</p>}
-            {errors.password && <p>Password Invalid</p>}
+            {errors.password && <p>Password Invalid, should be 8 characters long.</p>}
         </form>
     );
 }
